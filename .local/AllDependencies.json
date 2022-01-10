@@ -5014,15 +5014,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oana\\.nuget\\packages\\": {}
+    "C:\\Users\\Dan\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "ScrapeData",
       "projectName": "ScrapeData",
-      "projectPath": "C:\\Users\\Oana\\Downloads\\OneDrive_2022-01-10\\Lab2 - ScrapeAmazonData\\.local",
-      "packagesPath": "C:\\Users\\Oana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oana\\Downloads\\OneDrive_2022-01-10\\Lab2 - ScrapeAmazonData\\.local"
+      "projectPath": "D:\\Facultate\\Anul-III\\RPA\\RPA-project\\.local",
+      "packagesPath": "C:\\Users\\Dan\\.nuget\\packages\\",
+      "outputPath": "D:\\Facultate\\Anul-III\\RPA\\RPA-project\\.local"
     },
     "frameworks": {
       "net461": {
@@ -5048,7 +5048,7 @@
             "version": "[21.4.4, 21.4.4]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Oana\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Dan\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
