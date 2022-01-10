@@ -59,7 +59,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OpenWebPage" sap:VirtualizedContainerService.HintSize="591.2,670.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Open web page " sap:VirtualizedContainerService.HintSize="591.2,670.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="pageLoaded" />
     </Sequence.Variables>
