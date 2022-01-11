@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>775.2,1500</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>787.2,1500</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -92,17 +92,29 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_URL">[SiteURL]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search type of book workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SearchProduct.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search type of book workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SearchBooks.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_product">[keyword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_product">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="keyword" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Filter books workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="FilterProducts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Age">Teen/Young Adult</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Featured">Textbooks</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Format">Paperback</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Language">English</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Age">
+          <Literal x:TypeArguments="x:String">Teen/Young Adult</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Featured">
+          <Literal x:TypeArguments="x:String">Textbooks</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Format">
+          <Literal x:TypeArguments="x:String">Paperback</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Language">
+          <Literal x:TypeArguments="x:String">English</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get books workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetData.xaml">
@@ -110,13 +122,13 @@
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ExtractedDataTable">[extractedDT]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process extracted data workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ProcessPrice.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process extracted data workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ProcessDataTable.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inputDT">[extractedDT]</InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="site_url">[SiteURL]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Save to Excel workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Write Excel.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Save to Excel workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="WriteExcel.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[extractedDT]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
@@ -129,13 +141,13 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send Email workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SendEmail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_SendEmailTo">
-          <Literal x:TypeArguments="x:String">coiculescuveronica@gmail.com</Literal>
+          <Literal x:TypeArguments="x:String">oanadima26@gmail.com</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_File">
           <Literal x:TypeArguments="x:String">today_output.xlsx</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-          <Literal x:TypeArguments="x:String">Rezultatul cautarii dumneavoastra</Literal>
+          <Literal x:TypeArguments="x:String">Preturile de astazi</Literal>
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
