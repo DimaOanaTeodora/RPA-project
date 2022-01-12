@@ -1,11 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.keyword="fiction" this:Main.format="Paperback" this:Main.age="Teen/Young Adult" this:Main.featured="Textbooks" this:Main.emal="oanadima26@gmail.com" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="keyword" Type="InArgument(x:String)" />
+    <x:Property Name="format" Type="InArgument(x:String)" />
+    <x:Property Name="age" Type="InArgument(x:String)" />
+    <x:Property Name="featured" Type="InArgument(x:String)" />
+    <x:Property Name="emal" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>787.2,1500</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>758.4,1500</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -76,17 +80,13 @@
       <Variable x:TypeArguments="x:String" Default="www.betterworldbooks.com" Name="SiteURL" />
       <Variable x:TypeArguments="x:String" Name="product" />
       <Variable x:TypeArguments="sd:DataTable" Name="extractedDT" />
+      <Variable x:TypeArguments="x:Boolean" Name="empty_search" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InputSearchData workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="InputSearchData.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="keyword">[keyword]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Open web page workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" Level="Info" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OpenWebPage.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_URL">[SiteURL]</InArgument>
@@ -97,24 +97,28 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_product">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="keyword" />
         </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search" />
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search">
+          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="empty_search" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Filter books workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="FilterProducts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_Age">
-          <Literal x:TypeArguments="x:String">Teen/Young Adult</Literal>
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="age" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Featured">
-          <Literal x:TypeArguments="x:String">Textbooks</Literal>
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="featured" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Format">
-          <Literal x:TypeArguments="x:String">Paperback</Literal>
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="format" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Language">
           <Literal x:TypeArguments="x:String">English</Literal>
         </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search" />
+        <InArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search">
+          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="empty_search" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get books workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetData.xaml">
@@ -138,13 +142,24 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Compare old and new Prices" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ComparePrices.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send Email workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SendEmail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_SendEmailTo">
           <Literal x:TypeArguments="x:String">oanadima26@gmail.com</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_File">
-          <Literal x:TypeArguments="x:String">today_output.xlsx</Literal>
+          <Literal x:TypeArguments="x:String">reduceri.xlsx</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
           <Literal x:TypeArguments="x:String">Preturile de astazi</Literal>
