@@ -6744,15 +6744,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oana\\.nuget\\packages\\": {}
+    "C:\\Users\\Dan\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "ScrapeData",
       "projectName": "ScrapeData",
-      "projectPath": "C:\\Users\\Oana\\Desktop\\Proiect RPA\\.local",
-      "packagesPath": "C:\\Users\\Oana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oana\\Desktop\\Proiect RPA\\.local"
+      "projectPath": "D:\\Facultate\\Anul-III\\RPA2\\RPA-project\\.local",
+      "packagesPath": "C:\\Users\\Dan\\.nuget\\packages\\",
+      "outputPath": "D:\\Facultate\\Anul-III\\RPA2\\RPA-project\\.local"
     },
     "frameworks": {
       "net461": {
@@ -6778,7 +6778,7 @@
             "version": "[21.10.4, 21.10.4]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Oana\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Dan\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
