@@ -81,11 +81,7 @@
       <Variable x:TypeArguments="x:String" Name="product" />
       <Variable x:TypeArguments="sd:DataTable" Name="extractedDT" />
       <Variable x:TypeArguments="x:Boolean" Name="empty_search" />
-      <Variable x:TypeArguments="x:String" Name="fileSend">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">reduceri.xlsx</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="reduceri.xlsx" Name="fileSend" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -148,15 +144,9 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send Email workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SendEmail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SendEmailTo">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="email" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_File">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="fileSend" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-          <Literal x:TypeArguments="x:String">Preturile de astazi</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SendEmailTo">[email]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_File">[fileSend]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Subject">Preturile de astazi</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
