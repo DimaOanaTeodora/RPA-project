@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>960,1500</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>788,1500</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -81,6 +81,11 @@
       <Variable x:TypeArguments="x:String" Name="product" />
       <Variable x:TypeArguments="sd:DataTable" Name="extractedDT" />
       <Variable x:TypeArguments="x:Boolean" Name="empty_search" />
+      <Variable x:TypeArguments="x:String" Name="fileSend">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">reduceri.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -100,21 +105,11 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Filter books workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="FilterProducts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Age">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="age" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Featured">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="featured" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Format">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="format" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Language">
-          <Literal x:TypeArguments="x:String">English</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search">
-          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="empty_search" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Age">[age]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Featured">[featured]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Format">[format]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Language">English</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="not_empty_search">[empty_search]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get books workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetData.xaml">
@@ -140,7 +135,9 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Compare old and new Prices" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ComparePrices.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InOutArgument x:TypeArguments="x:String" x:Key="fileToSend">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="fileSend" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -155,7 +152,7 @@
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="email" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_File">
-          <Literal x:TypeArguments="x:String">reduceri.xlsx</Literal>
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="fileSend" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
           <Literal x:TypeArguments="x:String">Preturile de astazi</Literal>
